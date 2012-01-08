@@ -10,8 +10,6 @@ var discPriority = 2;
 var a_discrepancies = ["landing light", "bird strike", "Comm 2"];
 var canFlyNights = true;
 var isGrounded = false;
-var airCraftStatus = [];
-
 
 //********************methods (or functions whatever you want to call them)
 var hasLanded = function (helicopter){  			// Procedure
@@ -49,9 +47,31 @@ var mechsAvailable = function (priority){ 			// Number function
 	return availableWorkers;
 }
 
+var orderPart = function (helicopter, part){ 			// string function
+	var heliType = "AS350";
+	var faaCode = 34;
+	var reference = "Maintenance Manual";
+	
+	var orderForm = "We need an " + helicopter + part + " which can be referenced from the " + reference + " under FAA code #" + faaCode".";
+	
+	return orderForm;
+}
 
-var orderPart = function (priority, part); 			// string function
-var notifyPilots = function (priority, a_pilots[]); // array function
+var notifyPilots = function (priority, a_pilots){ 	// array function
+	//I think the compiler is ignoring all my comments
+	var maintHours = 7;
+	var waitForParts = 3;
+	var prepTime = 1;
+	var message = "";
+	var a_pilotsNotified = [];
+	
+	for (var i = 0; i < a_pilots.length; i++){
+		console.log("Excuse me, " + a_pilots[i] + ", I wanted to let you know that the helicopter will be down for about " +
+		(maintHours + waitForParts + prepTime) + "hours.");
+		a_pilotsNotified.push(a_pilots[i]);
+	}
+	return a_pilotsNotified;
+}
 
 
 //******************** "The Code"
