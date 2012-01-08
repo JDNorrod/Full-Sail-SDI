@@ -3,14 +3,14 @@
 //  SDI January 2012
 
 //********************Variables
-var a_pilots["Chad", "Barb", "Jon"];
-var a_helicopter["183CB", "856BP", "376HS"];
+var a_pilots = ["Chad", "Barb", "Jon"];
+var a_helicopter = ["183CB", "856BP", "376HS"];
 var discExists = true;
-var discPriority = 0;
-var a_discrepancies["landing light", "bird strike", "Comm 2"];
+var discPriority = 2;
+var a_discrepancies = ["landing light", "bird strike", "Comm 2"];
 var canFlyNights = true;
 var isGrounded = false;
-var airCraftStatus[];
+var airCraftStatus = [];
 
 
 //********************methods (or functions whatever you want to call them)
@@ -22,10 +22,11 @@ var hasLanded = function (helicopter){  			// Procedure
 	else{
 		console.log("This is an EC120, which isn't scheduled for tonight.");
 	}
+	return;
 }
 
 var isBroken = function (pilot, discrepancy){ 		// Boolean Function
-	console.log("We need to find out if anything is broken on the helicopter, let's as the pilot " + pilot + ".");
+	console.log("We need to find out if anything is broken on the helicopter, let's ask the pilot " + pilot + ".");
 	if (discrepancy){
 		console.log("We'll need to do some troubleshooting, there's some kind of problem.");
 		return discrepancy;
@@ -35,7 +36,20 @@ var isBroken = function (pilot, discrepancy){ 		// Boolean Function
 		return discrepancy;
 	}
 }
-var checkPriority = function (priority); 			// Number function
+
+var mechsAvailable = function (priority){ 			// Number function
+	var availableWorkers = 0;
+	
+	while (availableWorkers < priority){
+		console.log("We need to find more workers..  Excuse me, can anyone help me with this?");
+		console.log("I have a priority " + priority + " discrepancy and need " + (priority - availableWorkers) " more people to help.");
+		availableWorkers++;							
+	}
+	
+	return availableWorkers;
+}
+
+
 var orderPart = function (priority, part); 			// string function
 var notifyPilots = function (priority, a_pilots[]); // array function
 
