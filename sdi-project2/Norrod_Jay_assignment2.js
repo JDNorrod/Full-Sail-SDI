@@ -15,7 +15,7 @@ var isGrounded = false;
 var hasLanded = function (helicopter){  			// Procedure
 	console.log("Well it's just about the end of shift, let's check on the helicopters so we can leave a good passdown");
 	if (helicopter === "856BP"){
-		console.log("856BP is scheduled for tonight, let's find the pilot to see if there are any problems");
+		console.log("856BP is scheduled for tonight, let's find the pilot to see if there are any problems.");
 	}
 	else{
 		console.log("This is an EC120, which isn't scheduled for tonight.");
@@ -30,7 +30,7 @@ var isBroken = function (pilot, discrepancy){ 		// Boolean Function
 		return discrepancy;
 	}
 	else{
-		console.log("Everything seems to be in working order, let's go home");
+		console.log("Everything seems to be in working order, let's go home.");
 		return discrepancy;
 	}
 }
@@ -40,9 +40,10 @@ var mechsAvailable = function (priority){ 			// Number function
 	
 	while (availableWorkers < priority){
 		console.log("We need to find more workers..  Excuse me, can anyone help me with this?");
-		console.log("I have a priority " + priority + " discrepancy and need " + (priority - availableWorkers) " more people to help.");
+		console.log("I have a priority " + priority + " discrepancy and need " + (priority - availableWorkers) + " more people to help.");
 		availableWorkers++;							
 	}
+	console.log("Thanks, that's all the workers I'll need.");
 	
 	return availableWorkers;
 }
@@ -52,7 +53,7 @@ var orderPart = function (helicopter, part){ 			// string function
 	var faaCode = 34;
 	var reference = "Maintenance Manual";
 	
-	var orderForm = "We need an " + helicopter + part + " which can be referenced from the " + reference + " under FAA code #" + faaCode".";
+	var orderForm = "We need an " + helicopter + part + " which can be referenced from the " + reference + " under FAA code #" + faaCode + ".";
 	
 	return orderForm;
 }
@@ -67,7 +68,7 @@ var notifyPilots = function (priority, a_pilots){ 	// array function
 	
 	for (var i = 0; i < a_pilots.length; i++){
 		console.log("Excuse me, " + a_pilots[i] + ", I wanted to let you know that the helicopter will be down for about " +
-		(maintHours + waitForParts + prepTime) + "hours.");
+		(maintHours + waitForParts + prepTime) + " hours.");
 		a_pilotsNotified.push(a_pilots[i]);
 	}
 	return a_pilotsNotified;
@@ -78,3 +79,15 @@ var notifyPilots = function (priority, a_pilots){ 	// array function
 
 //if you delete this comment the program won't work right
 
+var scenario1 = 1;
+var a_pilotsNotified = 
+
+hasLanded(a_helicopter[scenario1]);
+isBroken(a_pilots[scenario1], discExists);
+mechsAvailable(discPriority);
+orderPart(a_helicopter[scenario1], a_discrepancies[scenario1]);
+var a_pilotsNotified = notifyPilots(discPriority, a_pilots);
+for (i = 0; i < a_pilotsNotified.length; i++){
+	console.log(a_pilotsNotified[i] + ", ");
+}
+console.log("have been notified of the maintenance we will be doing, let's get to work!");
