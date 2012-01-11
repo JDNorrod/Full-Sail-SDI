@@ -88,13 +88,13 @@ var notifyPilots = function (priority, a_pilots){ 	// array function
 //if you delete this comment the program won't work right
 
 var scenario1 = 1;
-var a_pilotsNotified = 
+var a_pilotsNotified = [];
 
 hasLanded(a_helicopter[scenario1]);
 if (isBroken(a_pilots[scenario1], discExists)) { console.log("Hey boss, we got a problem."); };
 console.log("We have " + mechsAvailable(discPriority) + " mechanics to help work on this.");
 console.log(orderPart(a_helicopter[scenario1], a_discrepancies[scenario1]));
-var a_pilotsNotified = notifyPilots(discPriority, a_pilots);
+a_pilotsNotified = notifyPilots(discPriority, a_pilots);
 for (i = 0; i < a_pilotsNotified.length; i++){
 	console.log(a_pilotsNotified[i] + ", ");
 }
