@@ -7,7 +7,7 @@ var a_pilots = ["Chad", "Barb", "Jon"];
 var a_helicopter = ["183CB", "856BP", "376HS"];
 var discExists = true;
 var discPriority = 2;
-var a_discrepancies = ["landing light", "bird strike", "Comm 2"];
+var a_discrepancies = ["landing light", "Master Blade", "Comm 2"];
 var canFlyNights = true;
 var isGrounded = false;
 
@@ -49,11 +49,19 @@ var mechsAvailable = function (priority){ 			// Number function
 }
 
 var orderPart = function (helicopter, part){ 			// string function
-	var heliType = "AS350";
+	
+	var heliType;
 	var faaCode = 34;
 	var reference = "Maintenance Manual";
 	
-	var orderForm = "We need an " + helicopter + part + " which can be referenced from the " + reference + " under FAA code #" + faaCode + ".";
+	if (helicopter === "856BP") { 
+		heliType = "AS350"; 
+	}
+	else {
+		heliType = "EC120"; 
+	}
+	
+	var orderForm = "We need an " + heliType + " " + part + " which can be referenced from the " + reference + " under FAA code #" + faaCode + ".";
 	
 	return orderForm;
 }
@@ -83,9 +91,9 @@ var scenario1 = 1;
 var a_pilotsNotified = 
 
 hasLanded(a_helicopter[scenario1]);
-isBroken(a_pilots[scenario1], discExists);
-mechsAvailable(discPriority);
-orderPart(a_helicopter[scenario1], a_discrepancies[scenario1]);
+if (isBroken(a_pilots[scenario1], discExists)) { console.log("Hey boss, we got a problem."); };
+console.log("We have " + mechsAvailable(discPriority) + " mechanics to help work on this.");
+console.log(orderPart(a_helicopter[scenario1], a_discrepancies[scenario1]));
 var a_pilotsNotified = notifyPilots(discPriority, a_pilots);
 for (i = 0; i < a_pilotsNotified.length; i++){
 	console.log(a_pilotsNotified[i] + ", ");
