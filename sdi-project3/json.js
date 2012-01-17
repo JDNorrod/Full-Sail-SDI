@@ -33,7 +33,7 @@ var json2 = {
 			"tailNumber": 	"856BP",
 			"typeFlier": 	"night",
 			"hours":		356,
-			"status":		"down",
+			"status":		"up",
 		},
 				{
 			"tailNumber": 	"179CB",

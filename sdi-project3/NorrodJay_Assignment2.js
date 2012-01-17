@@ -15,15 +15,42 @@ var isGrounded = false;
 var theSupervisors = [	
 	supv1 = {vacation: false, shiftLeader: "Chuck", days: ["mon", "tues", "weds"]},
 	supv2 = {working: false, shiftLeader: "Kelly", days: ["thurs", "fri", "sat"]}];
-var maintReport = {
-	hours: 356,
-	crewCheif: "Bill",
-	aircraft: {    //We have to go deeper...  Objects within objects
-		tailNumber: "",
-		pilot: "",
-		missionCapable: false
+var maintReport = function (item) { //construct end object
+
+	var tailNumber = "";
+	var setTail = function (num){
+		tailNumber = num;
+		return tailNumber;
 	}
-}			
+	
+	var status = "";
+	var setStatus = function (newStatus) {
+		status = newStatus;
+		return status;
+	}
+	var hours = 356;
+	var addHours = function (addHours){
+		return (hours + addHours);
+	}
+	var getFlier = function (){
+		return "day";
+	}
+	var lastReport = function (item){
+		for (var i = 0; i < item.length; i++){
+			var copter = item[i]; //here copter == each object within the allHeli array...
+			console.log("Previous report: \nTail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
+			+ " flight hours and is currently " + copter.status + ".");
+		}
+	}
+	
+	return {
+		"addHours":		addHours,
+		"setStatus":	setStatus,
+		"getFlier": 	getFlier,
+		"lastReport":	console.log(lastReport(item)),
+		"setTail":		setTail
+	}
+};			
 				
 //********************methods (or functions whatever you want to call them)
 var hasLanded = function (helicopter){  			// Procedure
@@ -116,7 +143,7 @@ var handleData = function (json) {
 	for (var i = 0; i < json.allHelicopters.length; i++){
 		var copter = json.allHelicopters[i]; //here copter == each object within the allHeli array...
 		console.log("Tail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
-		+ " flight hours and is currently " + status + ".");
+		+ " flight hours and is currently " + copter.status + ".");
 	}
 }
 //******************** "The Code"
@@ -143,5 +170,12 @@ for (i = 0; i < a_pilotsNotified.length; i++){
 	console.log(a_pilotsNotified[i] + ", ");
 }
 console.log("have been notified of the maintenance we will be doing, let's get to work!");
+console.log("Now that the maintenance is finished, let's update the report...");
+//handleData(json2);
 
-handleData(json2);
+console.log("Changes to the report are as follows: ");
+var mondayReport = maintReport(json2);
+console.log(mondayReport.setTail("856BP") + " now has " + mondayReport.addHours(11) + " hours, is a "  + mondayReport.getFlier() +
+" flier but it is currently " + mondayReport.setStatus("down") + ".");
+//console.log("Yesterday's report was: " + mondayReport.lastReport());
+
