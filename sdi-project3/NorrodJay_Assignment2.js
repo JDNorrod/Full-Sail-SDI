@@ -91,12 +91,12 @@ var notifyPilots = function (priority, a_pilots){ 	// array function
 var checkShift = function (supervisor, day){ //pass in object to compare to the day
 	
 	for(var i = 0; i < supervisor.length; i++){ //for each obj (or index) in the array...
-		console.log("step1 in checkShift");
+		console.log("Checking the Calendar...");
 		var daysArray = supervisor[i].days;    
 		for (var j = 0; i < daysArray.length; j++){ //for each string in the "days" array...
-			console.log("step2 in checkShift");
+			console.log("Referencing shifts...");
 			if (daysArray[j] === "mon"){ //look for "mon"
-				console.log("step3 in checkShift");
+				console.log("Looking up Employee ID...");
 				return supervisor[i];
 			}
 		}
@@ -115,7 +115,7 @@ if (isBroken(a_pilots[scenario1], discExists)) {  // if the helicopter is broken
 	console.log("Let's see who's the shift leader monday...");
 	if (currentDay === "mon"){
 		var currentSupv = checkShift(theSupervisors, currentDay);
-		console.log(currentSupv[shiftLeader] + "is the supervisor for today.  I'll let them know.");
+		console.log(currentSupv["shiftLeader"] + " is the supervisor for today.  I'll let them know.");
 	}
 }
 
