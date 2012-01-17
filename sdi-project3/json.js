@@ -13,12 +13,12 @@ var json = {
 		"179CB": {
 			"hours": 245,
 			"typeFlier": "day",
-			"status": "up
+			"status": "up"
 		},
 		"373HS": {
 			"hours": 340,
 			"typeFlier": "day/night",
-			"status": "up
+			"status": "up"
 		}
 	}
 };

@@ -111,6 +111,14 @@ var checkShift = function (supervisor, day){ //pass in object to compare to the 
 		}
 	}
 };
+
+var handleData = function (json) {
+	for (var i = 0; i < json.allHelicopters.length; i++){
+		var copter = json.allHelicopters[i]; //here copter == each object within the allHeli array...
+		console.log("Tail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
+		+ " flight hours and is currently " + status + ".");
+	}
+}
 //******************** "The Code"
 
 //if you delete this comment the program won't work right
@@ -135,3 +143,5 @@ for (i = 0; i < a_pilotsNotified.length; i++){
 	console.log(a_pilotsNotified[i] + ", ");
 }
 console.log("have been notified of the maintenance we will be doing, let's get to work!");
+
+handleData(json2);
