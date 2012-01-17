@@ -92,12 +92,12 @@ var checkShift = function (supervisor, day){ //pass in object to compare to the 
 	
 	for(var i = 0; i < supervisor.length; i++){ //for each obj (or index) in the array...
 		console.log("step1 in checkShift");
-		var supObj = supervisor[i].days;    
-		for (var j = 0; i < supObj.length; j++){ //for each string in the "days" array...
+		var daysArray = supervisor[i].days;    
+		for (var j = 0; i < daysArray.length; j++){ //for each string in the "days" array...
 			console.log("step2 in checkShift");
-			if (supObj[days[j]] === "mon"){ //look for "mon"  <-----this is giving me an error, "days is not defined"
+			if (daysArray[j] === "mon"){ //look for "mon"
 				console.log("step3 in checkShift");
-				return supervisor;
+				return supervisor[i];
 			}
 		}
 	}
