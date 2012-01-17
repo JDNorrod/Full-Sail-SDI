@@ -1,4 +1,4 @@
-//  SDI Project 2 Functions and What not
+//  SDI Project 3 Objects, Mutators and some guy named JSON
 //  Jay Norrod
 //  SDI January 2012
 
@@ -15,7 +15,16 @@ var isGrounded = false;
 var theSupervisors = [	
 	supv1 = {vacation: false, shiftLeader: "Chuck", days: ["mon", "tues", "weds"]},
 	supv2 = {working: false, shiftLeader: "Kelly", days: ["thurs", "fri", "sat"]}];
-
+var maintReport = {
+	hours: 356,
+	crewCheif: "Bill",
+	aircraft: {    //We have to go deeper...  Objects within objects
+		tailNumber: "",
+		pilot: "",
+		missionCapable: false
+	}
+}			
+				
 //********************methods (or functions whatever you want to call them)
 var hasLanded = function (helicopter){  			// Procedure
 	console.log("Well it's just about the end of shift, let's check on the helicopters so we can leave a good passdown");
