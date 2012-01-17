@@ -11,6 +11,11 @@ var a_discrepancies = ["landing light", "Master Blade", "Comm 2"];
 var canFlyNights = true;
 var isGrounded = false;
 
+//********************Objects
+var theSupervisors = [	
+	supv1 = {vacation: false, shiftLeader: "Chuck", days: ["mon", "tues", "weds"]},
+	supv2 = {working: false, shiftLeader: "Kelly", days: ["thurs", "fri", "sat"]}];
+
 //********************methods (or functions whatever you want to call them)
 var hasLanded = function (helicopter){  			// Procedure
 	console.log("Well it's just about the end of shift, let's check on the helicopters so we can leave a good passdown");
@@ -83,19 +88,36 @@ var notifyPilots = function (priority, a_pilots){ 	// array function
 	return a_pilotsNotified;
 }
 
-
+var checkShift = function (supervisor, day){ //pass in object to compare to the day
+	
+	for(var i = 0; i < supervisor.length; i++){ //for each obj (or index) in the array...
+		console.log("step1 in checkShift");
+		var supObj = supervisor[i].days;    
+		for (var j = 0; i < supObj.length; j++){ //for each string in the "days" array...
+			console.log("step2 in checkShift");
+			if (supObj[days[j]] === "mon"){ //look for "mon"  <-----this is giving me an error, "days is not defined"
+				console.log("step3 in checkShift");
+				return supervisor;
+			}
+		}
+	}
+};
 //******************** "The Code"
 
 //if you delete this comment the program won't work right
 
 var scenario1 = 1;
 var a_pilotsNotified = [];
-
+var currentDay = "mon";
 hasLanded(a_helicopter[scenario1]);
 
-if (isBroken(a_pilots[scenario1], discExists)) { 
-console.log("Hey boss, we got a problem.");
-};
+if (isBroken(a_pilots[scenario1], discExists)) {  // if the helicopter is broken
+	console.log("Let's see who's the shift leader monday...");
+	if (currentDay === "mon"){
+		var currentSupv = checkShift(theSupervisors, currentDay);
+		console.log(currentSupv[shiftLeader] + "is the supervisor for today.  I'll let them know.");
+	}
+}
 
 console.log("We have " + mechsAvailable(discPriority) + " mechanics to help work on this.");
 console.log(orderPart(a_helicopter[scenario1], a_discrepancies[scenario1]));
