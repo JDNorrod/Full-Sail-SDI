@@ -18,36 +18,39 @@ var theSupervisors = [
 var maintReport = function (item) { //construct end object
 
 	var tailNumber = "";
-	var setTail = function (num){
+	var setTail = function (num){  //sets the tail number of the helicopter
 		tailNumber = num;
 		return tailNumber;
 	}
 	
 	var status = "";
-	var setStatus = function (newStatus) {
+	var setStatus = function (newStatus) {  //set the up/down status
 		status = newStatus;
 		return status;
 	}
 	var hours = 356;
-	var addHours = function (addHours){
+	var addHours = function (addHours){	//add hours to the current hour total and return new value
 		return (hours + addHours);
 	}
-	var getFlier = function (){
+	var getFlier = function (){		//return day/night flier
 		return "day";
 	}
-	var lastReport = function (item){
-		for (var i = 0; i < item.length; i++){
-			var copter = item[i]; //here copter == each object within the allHeli array...
-			console.log("Previous report: \nTail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
-			+ " flight hours and is currently " + copter.status + ".");
+	var localItem = item;
+	
+	var lastReport = function (localItem) {	//json info should be passed in from main function, print yesterdays report
+		console.log("test item: " + localItem);
+		for(var i = 0; i < localItem.length; i++){
+			console.log("inside the loop");
 		}
+
+		console.log("Outside the loop");
 	}
 	
 	return {
 		"addHours":		addHours,
 		"setStatus":	setStatus,
 		"getFlier": 	getFlier,
-		"lastReport":	console.log(lastReport(item)),
+		"lastReport":	lastReport,
 		"setTail":		setTail
 	}
 };			
@@ -177,5 +180,6 @@ console.log("Changes to the report are as follows: ");
 var mondayReport = maintReport(json2);
 console.log(mondayReport.setTail("856BP") + " now has " + mondayReport.addHours(11) + " hours, is a "  + mondayReport.getFlier() +
 " flier but it is currently " + mondayReport.setStatus("down") + ".");
-//console.log("Yesterday's report was: " + mondayReport.lastReport());
+console.log("Yesterday's report was: ");
+mondayReport.lastReport(json2);
 
