@@ -33,19 +33,19 @@ var json2 = {
 			"tailNumber": 	"856BP",
 			"typeFlier": 	"night",
 			"hours":		356,
-			"status":		"up",
+			"status":		"up"
 		},
 				{
 			"tailNumber": 	"179CB",
 			"hours":		245,
 			"typeFlier": 	"day",
-			"status":		"up",
+			"status":		"up"
 		},
 				{
 			"tailNumber": 	"373HS",
 			"hours":		340,
 			"typeFlier": 	"day/night",
-			"status":		"up",
+			"status":		"up"
 		}
 	]		
 }

@@ -28,30 +28,39 @@ var maintReport = function (item) { //construct end object
 		status = newStatus;
 		return status;
 	}
+	
 	var hours = 356;
 	var addHours = function (addHours){	//add hours to the current hour total and return new value
 		return (hours + addHours);
 	}
+	
 	var getFlier = function (){		//return day/night flier
 		return "day";
 	}
-	var localItem = item;
 	
-	var lastReport = function (localItem) {	//json info should be passed in from main function, print yesterdays report
-		console.log("test item: " + localItem);
-		for(var i = 0; i < localItem.length; i++){
-			console.log("inside the loop");
+	var lastReport = function (json) {	//json info should be passed in from main function, print yesterdays report
+		for (var i = 0; i < json.allHelicopters.length; i++){
+			var copter = json.allHelicopters[i]; //here copter == each object within the allHeli array...
+			console.log("Tail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
+			+ " flight hours and is currently " + copter.status + ".");
 		}
-
-		console.log("Outside the loop");
 	}
+	
+/*	var handleData = function (json) {
+	for (var i = 0; i < json.allHelicopters.length; i++){
+		var copter = json.allHelicopters[i]; //here copter == each object within the allHeli array...
+		console.log("Tail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
+		+ " flight hours and is currently " + copter.status + ".");
+	}
+}*/
 	
 	return {
 		"addHours":		addHours,
 		"setStatus":	setStatus,
 		"getFlier": 	getFlier,
 		"lastReport":	lastReport,
-		"setTail":		setTail
+		"setTail":		setTail,
+//		"handleData":	handleData
 	}
 };			
 				
@@ -142,13 +151,13 @@ var checkShift = function (supervisor, day){ //pass in object to compare to the 
 	}
 };
 
-var handleData = function (json) {
+/*(var handleData = function (json) {
 	for (var i = 0; i < json.allHelicopters.length; i++){
 		var copter = json.allHelicopters[i]; //here copter == each object within the allHeli array...
 		console.log("Tail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
 		+ " flight hours and is currently " + copter.status + ".");
 	}
-}
+}*/
 //******************** "The Code"
 
 //if you delete this comment the program won't work right
@@ -174,7 +183,6 @@ for (i = 0; i < a_pilotsNotified.length; i++){
 }
 console.log("have been notified of the maintenance we will be doing, let's get to work!");
 console.log("Now that the maintenance is finished, let's update the report...");
-//handleData(json2);
 
 console.log("Changes to the report are as follows: ");
 var mondayReport = maintReport(json2);
@@ -182,4 +190,4 @@ console.log(mondayReport.setTail("856BP") + " now has " + mondayReport.addHours(
 " flier but it is currently " + mondayReport.setStatus("down") + ".");
 console.log("Yesterday's report was: ");
 mondayReport.lastReport(json2);
-
+//mondayReport.handleData(json2);
