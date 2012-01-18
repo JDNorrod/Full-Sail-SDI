@@ -15,7 +15,7 @@ var isGrounded = false;
 var theSupervisors = [	
 	supv1 = {vacation: false, shiftLeader: "Chuck", days: ["mon", "tues", "weds"]},
 	supv2 = {working: false, shiftLeader: "Kelly", days: ["thurs", "fri", "sat"]}];
-var maintReport = function (item) { //construct end object
+var maintReport = function (item) { //construct end object, returns an object
 
 	var tailNumber = "";
 	var setTail = function (num){  //sets the tail number of the helicopter
@@ -173,6 +173,9 @@ if (isBroken(a_pilots[scenario1], discExists)) {  // if the helicopter is broken
 		var currentSupv = checkShift(theSupervisors, currentDay);
 		console.log(currentSupv["shiftLeader"] + " is the supervisor for today.  I'll let them know.");
 	}
+}
+else{
+		console.log("Great day guys, let's go home.");
 }
 
 console.log("We have " + mechsAvailable(discPriority) + " mechanics to help work on this.");
