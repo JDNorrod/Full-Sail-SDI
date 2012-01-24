@@ -23,9 +23,6 @@ var json = {
 	}
 };
 
-//json.helicopters.856BP.hours;
-
-
 
 var json2 = {
 	"allHelicopters": [

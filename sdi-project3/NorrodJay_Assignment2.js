@@ -15,6 +15,7 @@ var isGrounded = false;
 var theSupervisors = [	
 	supv1 = {vacation: false, shiftLeader: "Chuck", days: ["mon", "tues", "weds"]},
 	supv2 = {working: false, shiftLeader: "Kelly", days: ["thurs", "fri", "sat"]}];
+
 var maintReport = function (item) { //construct end object, returns an object
 
 	var tailNumber = "";
@@ -139,25 +140,19 @@ var notifyPilots = function (priority, a_pilots){ 	// array function
 var checkShift = function (supervisor, day){ //pass in object to compare to the day
 	
 	for(var i = 0; i < supervisor.length; i++){ //for each obj (or index) in the array...
-		console.log("Checking the Calendar...");
+		console.log("fist stage");
 		var daysArray = supervisor[i].days;    
 		for (var j = 0; i < daysArray.length; j++){ //for each string in the "days" array...
-			console.log("Referencing shifts...");
+			console.log("second stage...");
 			if (daysArray[j] === "mon"){ //look for "mon"
-				console.log("Looking up Employee ID...");
+				console.log("third stage...");
 				return supervisor[i];
 			}
 		}
 	}
 };
+	
 
-/*(var handleData = function (json) {
-	for (var i = 0; i < json.allHelicopters.length; i++){
-		var copter = json.allHelicopters[i]; //here copter == each object within the allHeli array...
-		console.log("Tail Number: " + copter.tailNumber + " can fly: " + copter.typeFlier + " has " + copter.hours
-		+ " flight hours and is currently " + copter.status + ".");
-	}
-}*/
 //******************** "The Code"
 
 //if you delete this comment the program won't work right
