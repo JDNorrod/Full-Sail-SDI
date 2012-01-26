@@ -6,6 +6,7 @@ var kidAges = [19, 13, 8, 12, 43, 98, 20];
 var stillKid = 12;
 var numString = "32";
 var decPlaces = 3;
+var lowerCase = "this statement will have capitals";
 
 //****************************functions
 var checkEmail = function (email){  //validates the format of an email address
@@ -37,14 +38,15 @@ var numberCheck = function (inputArray, standard){
 		};
 	};
 	//This is where I show you how cool I am because I use the Ternary operator
-//	lowest = ((minArray[0] < minArray[minArray.length - 1]) ? minArray[0] : minArray[minArray.length - 1]);
-//	console.log("lowest = " + lowest);
+
 	lowest = minArray[0];
 	//Now we set the closestToStandard based on the lowest element in this array
 	for (var j = 1; j < minArray.length; j++){
-//		closeToStandard = (minArray[i] < lowest ? minArray[i] : lowest);
+		console.log("Lowest = " + lowest);
 		console.log(lowest + " < " + minArray[j] + "??");
 		lowest = ((lowest < minArray[j]) ? lowest : minArray[j]);
+
+		
 		console.log(lowest);
 	};
 	return lowest; //return the closest to standard but higher than it
@@ -75,6 +77,12 @@ var fuzzyMatch = function (num, percentage, standard){
 		return false;
 	}
 };
+
+String.prototype.capitalize = function(){
+   return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+};
+
+
 //****************************Proof that I'm a programming ninja
 
 //Email check
@@ -94,3 +102,5 @@ console.log("The string " + numString + " converts to number " + numToString(num
 console.log("Using " + decPlaces + " decimal places " + stillKid + " becomes " + decimalPlaces(stillKid, decPlaces));
 //Check within Percentage
 console.log("8.3 is within 10% of 8: " + fuzzyMatch(8.3, 10, 8));
+//Make capital Letters
+console.log("this statement becomes: " + lowerCase.capitalize());
