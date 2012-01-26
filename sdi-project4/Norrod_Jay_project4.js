@@ -1,3 +1,7 @@
+//Jay Norrod
+//SDI 1201
+//Library of cool functions
+
 //****************************variables
 var myEmail = "jonathan@aol.com";
 var mySite = "https://jonathan.com/something";
