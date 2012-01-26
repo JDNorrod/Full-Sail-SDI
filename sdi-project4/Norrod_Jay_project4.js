@@ -52,7 +52,7 @@ var numberCheck = function (inputArray, standard){
 	return lowest; //return the closest to standard but higher than it
 };
 
-var numToString = function (convert){
+var numFromString = function (convert){
 	return parseInt(convert);
 }
 
@@ -69,13 +69,7 @@ var fuzzyMatch = function (num, percentage, standard){
 	console.log("lesser is " + lesserNum);
 	console.log("greater is " + greaterNum);
 	
-	
-	if ((num > lesserNum) && (num < greaterNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (((num > lessNum) && (num < greaterNum)) ? true : false);
 };
 
 String.prototype.capitalize = function(){
@@ -97,7 +91,7 @@ else{ console.log("She's playin you man..  It ain't real")};
 //Check the number in an array to a standard
 console.log("The youngest person here that is not a kid is: " + numberCheck(kidAges, stillKid));
 //convert string-number to number-number
-console.log("The string " + numString + " converts to number " + numToString(numString));
+console.log("The string " + numString + " converts to number " + numFromString(numString));
 //set precision
 console.log("Using " + decPlaces + " decimal places " + stillKid + " becomes " + decimalPlaces(stillKid, decPlaces));
 //Check within Percentage
